@@ -1,6 +1,7 @@
 package distributed_system_thread.node;
 
 import distributed_system_thread.alg.MessageSender;
+import distributed_system_thread.node.sender.SenderHandler;
 import distributed_system_thread.port.PortHandlerService;
 
 import java.io.*;
@@ -40,7 +41,9 @@ public class Node extends Thread {
 //            e.printStackTrace();
 //        }
 
-        // start sender here
+        var sender = new SenderHandler(portHandler.getPorts(), super.getId(), server.getLocalPort());
+        sender.start();
+
         while (true) {
             try {
                 var client = server.accept();
