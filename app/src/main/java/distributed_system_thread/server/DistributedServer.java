@@ -5,6 +5,7 @@ import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Deprecated
 public class DistributedServer extends Thread {
     private static List<Socket> clientSockets = new ArrayList<>();
     private static ServerSocket serverSocket;

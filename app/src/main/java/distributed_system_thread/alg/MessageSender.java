@@ -2,6 +2,7 @@ package distributed_system_thread.alg;
 
 import java.io.PrintWriter;
 
+@Deprecated
 public class MessageSender extends Thread {
     private PrintWriter output;
     private long fatherThreadId;
