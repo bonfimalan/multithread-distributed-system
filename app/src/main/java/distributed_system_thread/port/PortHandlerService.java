@@ -1,11 +1,14 @@
 package distributed_system_thread.port;
 
+import lombok.Getter;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PortHandlerService {
+    @Getter
     private final List<Integer> ports = new ArrayList<>();
     private int portCount = 12345;
 
@@ -19,9 +22,5 @@ public class PortHandlerService {
         } catch (IOException e) {
             return createServer();
         }
-    }
-
-    public List<Integer> getPorts() {
-        return this.ports;
     }
 }
