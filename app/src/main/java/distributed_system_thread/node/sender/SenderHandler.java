@@ -3,9 +3,10 @@ package distributed_system_thread.node.sender;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 @RequiredArgsConstructor
-public class SenderHandler extends Thread{
+public class SenderHandler extends Thread {
     private final List<Integer> ports;
     private final long nodeId;
     private final int currentPort;
