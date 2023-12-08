@@ -2,6 +2,7 @@ package distributed_system_thread.node.sender;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import distributed_system_thread.App;
 import distributed_system_thread.alg.Agreement;
 import distributed_system_thread.domain.AgreementEntity;
 import distributed_system_thread.util.Utils;
@@ -21,7 +22,7 @@ public class AgreementSender extends Thread {
     @Override
     public void run() {
         System.out.println("Sender first execution port " + currentPort);
-        while (!agreement.decided()) {
+        while (agreement.shouldRun()) {
             try {
                 var mapper = new ObjectMapper().writer();
                 var choice = propose();
@@ -43,7 +44,7 @@ public class AgreementSender extends Thread {
     }
 
     private int propose() {
-        return Utils.randomBetween(1, 4);
+        return Utils.randomBetween(1, App.NUMBER_OF_OPTIONS);
     }
 
     private void lock() throws InterruptedException {

@@ -9,7 +9,7 @@ public class AgreementWorker extends Thread {
 
     @Override
     public void run() {
-        while (true) {
+        while (agreement.shouldRun()) {
             if (agreement.shouldChoose()) {
                 agreement.majority();
 
@@ -24,8 +24,6 @@ public class AgreementWorker extends Thread {
             try {
                 Thread.sleep(20);
             } catch (InterruptedException ignored) {}
-
-            if (agreement.decided()) break;
         }
     }
 }

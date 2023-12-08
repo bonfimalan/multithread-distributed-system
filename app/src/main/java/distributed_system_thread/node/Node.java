@@ -4,14 +4,11 @@ import distributed_system_thread.alg.Agreement;
 import distributed_system_thread.alg.AgreementWorker;
 import distributed_system_thread.node.reveiver.AgreementReceiver;
 import distributed_system_thread.node.sender.AgreementSender;
-import distributed_system_thread.node.sender.SenderHandler;
 import distributed_system_thread.port.PortHandlerService;
 import lombok.Getter;
-import org.checkerframework.checker.units.qual.A;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.List;
 
 
 public class Node extends Thread {
@@ -34,7 +31,7 @@ public class Node extends Thread {
         var agreementWorker = new AgreementWorker(agreement, getId());
         agreementWorker.start();
 
-        while (!agreement.decided()) {
+        while (agreement.shouldRun()) {
             try {
                 var client = server.accept();
 

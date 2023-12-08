@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class App {
+    public static final int NUMBER_OF_NODES = 10;
+    public static final int NUMBER_OF_OPTIONS = 5;
     private static final List<Node> threadPoll = new ArrayList<>();
     private static final PortHandlerService portHandlerService = new PortHandlerService();
 
     public static void main(String[] args) throws InterruptedException {
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < NUMBER_OF_NODES; i++) {
             threadPoll.add(new Node(portHandlerService.createServer(), portHandlerService));
         }
         var serverSockets = threadPoll.stream()

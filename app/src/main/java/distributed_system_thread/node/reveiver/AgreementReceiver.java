@@ -23,11 +23,12 @@ public class AgreementReceiver extends Thread {
             String inputString = inputBuffer.readLine();
 
             Thread.sleep(100);
+
             socket.close();
 
             var mapper = new ObjectMapper().reader();
             var entity = mapper.readValue(inputString, AgreementEntity.class);
-//            System.out.println("Thread " + nodeThreadId + " received " + entity);
+            System.out.println("Thread " + nodeThreadId + " received " + entity);
             if(entity.getRound() == agreementAlg.getRound()) {
                 agreementAlg.addChoice(entity.getChoice());
             }

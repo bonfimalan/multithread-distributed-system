@@ -1,7 +1,6 @@
 package distributed_system_thread.alg;
 
 import distributed_system_thread.node.sender.AgreementSender;
-import distributed_system_thread.port.PortHandlerService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -48,6 +47,10 @@ public class Agreement {
 
     public boolean decided() {
         return choiceValue != -1;
+    }
+
+    public boolean shouldRun() {
+        return !decided();
     }
 
     public void unlockSender() {
